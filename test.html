@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics and Regulation of AI Itself</title>
+    <style>
+        /* Base styles and variables */
+        :root {
+            --primary-color: #2a4d69;
+            --secondary-color: #4b86b4;
+            --accent-color: #adcbe3;
+            --light-color: #e7eff6;
+            --dark-color: #1a3045;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        blockquote {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            font-style: italic;
+        }
+        
+        code {
+            font-family: monospace;
+            background-color: var(--light-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        header h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            color: var(--light-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        /* Main content */
+        .main-content {
+            margin-bottom: 3rem;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        
+        /* Images and figures */
+        .figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .figure-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        tr:hover {
+            background-color: rgba(173, 203, 227, 0.2);
+        }
+        
+        /* References */
+        .references {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 5px;
+        }
+        
+        .references h2 {
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .references ol {
+            margin-left: 2rem;
+        }
+        
+        .references li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.25rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>AI Ethics and Regulation of AI Itself</h1>
+            <p>Towards Meta-Regulatory Frameworks for Artificial Intelligence</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#part1">Context & Motivation</a></li>
+                <li><a href="#part2">ML/AI Technologies</a></li>
+                <li><a href="#part3">Ethical Implications</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main content -->
+    <div class="container main-content">
+        <!-- Introduction -->
+        <section id="introduction" class="section">
+            <h2>Introduction</h2>
+            <p>The rapid advancement of artificial intelligence technologies has created an urgent need for effective regulatory frameworks. This blog explores how AI itself might be leveraged to create more effective oversight of increasingly powerful AI systems – a concept known as meta-regulation.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/400" alt="Artificial Intelligence Regulation Concept" />
+                <p class="figure-caption">Figure 1: The growing complexity of AI systems has outpaced traditional regulatory approaches.</p>
+            </div>
+            
+            <p>As we approach a future where AI systems become increasingly autonomous and capable, traditional human-only regulation faces significant scaling challenges. This blog examines the application domain of AI regulation, the enabling technologies for machine learning-based oversight, and the broader ethical implications of using AI to regulate AI.</p>
+        </section>
+        
+        <!-- Part 1: Context and Motivation -->
+        <section id="part1" class="section">
+            <h2>Part 1: Context and Motivation</h2>
+            
+            <h3>1.1 Introduction: Why Regulating AI is Urgent</h3>
+            <p>The exponential growth of artificial intelligence has triggered a paradigm shift across virtually every sector of society. From healthcare diagnostics to financial decision-making, AI systems increasingly influence critical aspects of our lives, often operating with limited oversight or accountability. The rapid development and deployment of large language models (LLMs) like GPT-4, Claude, and Gemini, alongside autonomous systems in transportation, healthcare, and defence, has outpaced our regulatory frameworks' ability to ensure their safety and alignment with human values [1].</p>
+            
+            <p>Recent high-profile incidents have underscored this regulatory gap. In 2023, major language models generated fabricated legal citations that were subsequently used in court filings, highlighting the dangers of hallucinated content [2]. Facial recognition technologies deployed by law enforcement have repeatedly demonstrated disproportionate error rates for darker-skinned individuals and women [3]. Automated hiring systems have perpetuated gender and racial biases, systematically disadvantaging qualified applicants from underrepresented groups [4]. These instances represent merely the visible surface of potential harms, with many others likely occurring undetected.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/500" alt="AI Regulatory Challenges Diagram" />
+                <p class="figure-caption">Figure 2: The multi-dimensional challenges of AI regulation span technical, institutional, and normative domains.</p>
+            </div>
+            
+            <h3>1.2 The Application Domain: Regulating AI Systems Themselves</h3>
+            <p>The concept of meta-regulation—using AI to regulate AI—represents an emerging application domain at the intersection of technical capability and governance necessity. This domain encompasses the development, deployment, and oversight of automated systems designed specifically to monitor, evaluate, and potentially intervene in the operation of other AI systems [8].</p>
+            
+            <p>The regulatory ecosystem for AI spans multiple sectors with varying requirements and constraints. Healthcare AI applications demand scrutiny for diagnostic accuracy and patient privacy; financial algorithms require auditing for discrimination and manipulation risk; social media recommendation systems need monitoring for radicalisation pathways and misinformation amplification; law enforcement AI tools warrant evaluation for bias and civil liberties implications [9]. Each sector presents unique challenges, yet all share the need for regulatory approaches that can match the speed, scale, and complexity of AI deployment.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <h4>Healthcare AI Regulation</h4>
+                    <p>Focuses on diagnostic accuracy, patient privacy protection, and equitable access to care across demographic groups.</p>
+                </div>
+                <div class="card">
+                    <h4>Financial AI Regulation</h4>
+                    <p>Emphasizes non-discrimination in lending, transparency in decision-making, and systemic risk prevention.</p>
+                </div>
+                <div class="card">
+                    <h4>Social Media AI Regulation</h4>
+                    <p>Addresses content moderation equity, prevention of radicalization, and mitigation of misinformation spread.</p>
+                </div>
+            </div>
+            
+            <h3>1.3 Current Challenges in AI Oversight</h3>
+            <p>The effective regulation of artificial intelligence faces several formidable challenges that conventional oversight mechanisms struggle to address. These challenges span technical complexity, institutional limitations, and fundamental questions about values and governance.</p>
+            
+            <p>Perhaps the most significant technical challenge involves the "black box" nature of many advanced AI systems, particularly deep learning models. These models often operate as opaque decision-makers whose internal reasoning processes remain inaccessible even to their creators [14]. Unlike traditional software with explicitly programmed rules, neural networks develop their own implicit representations that resist straightforward inspection. This opacity complicates attempts to verify safety, fairness, or compliance with regulatory standards. When undesirable outputs occur, determining whether they represent isolated errors or symptoms of systemic problems becomes extraordinarily difficult without greater transparency.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/400" alt="AI Opacity and Black Box Problem" />
+                <p class="figure-caption">Figure 3: The "black box" problem in AI makes oversight and accountability challenging.</p>
+            </div>
+            
+            <h3>1.4 The Case for AI-Based Oversight</h3>
+            <p>The limitations of conventional regulatory approaches to AI necessitate consideration of novel oversight mechanisms—particularly those leveraging AI's own capabilities. Several compelling arguments support exploring AI-based regulatory tools as complementary to human oversight.</p>
+            
+            <p>First, the scale and complexity of modern AI systems render manual inspection infeasible. Large language models trained on trillions of tokens, recommendation systems processing billions of interactions, and autonomous systems navigating open-ended environments all operate at scales beyond comprehensive human review. AI-based oversight tools offer the potential to analyse these systems more systematically, examining larger portions of their behaviour space than any human team could reasonably evaluate [11]. This capability becomes increasingly crucial as models grow in parameter count and capability, widening the gap between system complexity and human oversight capacity.</p>
+        </section>
+        
+        <!-- Part 2: ML/AI Technologies Enabling Regulation -->
+        <section id="part2" class="section">
+            <h2>Part 2: ML/AI Technologies Enabling Regulation</h2>
+            
+            <h3>2.1 AI Auditors and Output Monitoring</h3>
+            <p>The development of automated auditing and output monitoring tools represents a promising approach to addressing the regulatory challenges posed by advanced AI systems. These tools aim to systematically evaluate AI models for problematic behaviours, fairness issues, and unsafe outputs—essentially providing a technological means to verify compliance with ethical and regulatory standards.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/500" alt="AI Auditing Process Diagram" />
+                <p class="figure-caption">Figure 4: The process of AI auditing involves systematic evaluation across multiple dimensions.</p>
+            </div>
+            
+            <p>Fairness auditing tools exemplify this approach by enabling systematic assessment of model behaviour across demographic groups. Frameworks like IBM's AI Fairness 360, Microsoft's Fairlearn, and University of Chicago's Aequitas provide computational methods for detecting disparate impact and other fairness violations [10]. These tools implement various mathematical definitions of fairness—such as demographic parity, equal opportunity, and counterfactual fairness—allowing practitioners to evaluate models against multiple ethical criteria. They operate by systematically comparing model outputs across protected groups, identifying statistical patterns that might indicate bias even when individual decisions appear reasonable in isolation.</p>
+            
+            <h3>2.2 Adversarial Testing and Red-Teaming</h3>
+            <p>Adversarial testing and red-teaming represent increasingly sophisticated approaches to evaluating AI system safety and robustness. These methods involve deliberately probing systems for vulnerabilities, inappropriate behaviours, and failure modes that might not emerge during standard testing procedures. As AI systems grow more capable and complex, these adversarial approaches have become essential components of robust evaluation frameworks.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <h4>Jailbreaking Tests</h4>
+                    <p>Attempts to circumvent content filters and safety guardrails through creative prompt engineering.</p>
+                </div>
+                <div class="card">
+                    <h4>Prompt Injection</h4>
+                    <p>Inputs designed to override a model's default behavior through context manipulation.</p>
+                </div>
+                <div class="card">
+                    <h4>Goal Hijacking</h4>
+                    <p>Techniques to redirect AI systems from intended tasks toward alternative objectives.</p>
+                </div>
+                <div class="card">
+                    <h4>Automated Red-Teaming</h4>
+                    <p>Using AI systems themselves to systematically generate adversarial inputs and test for vulnerabilities.</p>
+                </div>
+            </div>
+            
+            <h3>2.3 Bias Detection in LLMs and Other Models</h3>
+            <p>Bias detection represents one of the most critical and technically challenging aspects of AI oversight. Advanced machine learning models—particularly large language models (LLMs) and multimodal systems—can absorb, encode, and perpetuate harmful societal biases present in their training data. Developing robust methodologies for identifying and quantifying these biases is essential for responsible development and regulation.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/400" alt="AI Bias Detection Framework" />
+                <p class="figure-caption">Figure 5: A framework for detecting and measuring bias in AI systems across multiple dimensions.</p>
+            </div>
+            
+            <p>Contemporary bias detection approaches employ multiple complementary techniques, each addressing different aspects of this multifaceted problem. Dataset auditing examines training data directly, identifying imbalances, stereotypical associations, and problematic patterns before they influence model behaviour [10]. This approach includes both quantitative analyses—such as demographic representation statistics—and qualitative examination of how different groups are portrayed. Tools like Datasheets for Datasets and Data Cards facilitate structured documentation of potential bias sources, enabling more transparent evaluation of dataset limitations.</p>
+            
+            <h3>2.4 Real-time Monitoring Systems</h3>
+            <p>The deployment of AI systems in dynamic environments necessitates continuous evaluation beyond pre-deployment testing. Real-time monitoring systems address this need by providing ongoing oversight of AI behaviour during operational use, enabling timely detection of and response to emerging issues. These systems represent a crucial component of comprehensive AI regulation, particularly for high-stakes applications where undetected failures could cause significant harm.</p>
+            
+            <h3>2.5 Limitations of AI Oversight</h3>
+            <p>While AI-based regulatory approaches offer promising capabilities, they face substantial limitations that warrant careful consideration. Understanding these constraints is essential for developing realistic expectations about meta-regulatory approaches and appropriate complementary governance mechanisms.</p>
+            
+            <p>Perhaps the most fundamental question concerns whether AI systems can meaningfully understand and evaluate the normative concepts central to regulation. Concepts like fairness, harm, and bias incorporate complex societal values and contextual judgments that extend beyond statistical patterns [19]. AI systems excel at identifying correlations and patterns but struggle with deeper normative reasoning about what constitutes appropriate behaviour in novel contexts. This limitation manifests in seemingly reasonable but ultimately problematic judgments, such as a fairness auditor that fails to recognise how historical patterns reflect discrimination rather than legitimate differences [7].</p>
+        </section>
+        
+        <!-- Part 3: Broader Ethical and Social Implications -->
+        <section id="part3" class="section">
+            <h2>Part 3: Broader Ethical and Social Implications</h2>
+            
+            <h3>3.1 Fairness and Bias in Meta-Regulatory Systems</h3>
+            <p>The deployment of AI systems to regulate other AI introduces complex fairness considerations that extend beyond those associated with primary AI applications. These meta-regulatory systems embed values and priorities into governance frameworks, potentially replicating or amplifying existing biases while introducing new equity concerns specific to oversight mechanisms.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/500" alt="Meta-Regulatory Fairness Challenges" />
+                <p class="figure-caption">Figure 6: The multi-layered fairness challenges in using AI to regulate AI systems.</p>
+            </div>
+            
+            <p>Representation disparities within regulatory AI development represent a foundational fairness concern. The technical expertise required to build sophisticated oversight tools remains concentrated within elite institutions and demographic groups, resulting in regulatory systems that may reflect narrow perspectives and priorities [3]. When these systems determine what constitutes harmful content, appropriate decision-making, or acceptable behaviour, they inevitably embed specific cultural and philosophical viewpoints that may not represent the diverse communities affected by AI deployment. This representational bias can manifest in oversight tools that disproportionately flag content meaningful to marginalised communities while overlooking harms that primarily affect privileged groups.</p>
+            
+            <h3>3.2 Explainability and Trust</h3>
+            <p>Explainability represents a critical dimension of AI regulation, determining whether oversight mechanisms remain comprehensible to human stakeholders and capable of building justified trust. This section examines explainability challenges in regulatory contexts, exploring their implications for effective governance and societal acceptance of AI oversight mechanisms.</p>
+            
+            <p>The "black box" nature of many advanced AI systems creates fundamental explainability challenges that cascade into regulatory domains. When the primary systems being regulated operate through opaque mechanisms—like deep neural networks with billions of parameters—regulatory judgments about their behaviour necessarily contend with inherent uncertainty [14]. This uncertainty complicates both technical assessment and stakeholder communication, potentially undermining trust in regulatory conclusions. If oversight systems cannot convincingly explain why they flagged a particular model behaviour as problematic, stakeholders may reasonably question whether regulatory interventions stand on solid foundations.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <h4>LIME (Local Interpretable Model-agnostic Explanations)</h4>
+                    <p>Creates simplified local models that approximate complex model behavior for specific inputs [17].</p>
+                </div>
+                <div class="card">
+                    <h4>SHAP (SHapley Additive exPlanations)</h4>
+                    <p>Uses game theory to assign importance values to each feature's contribution to predictions [18].</p>
+                </div>
+                <div class="card">
+                    <h4>Counterfactual Explanations</h4>
+                    <p>Shows how inputs would need to change to produce different outputs, providing actionable insights.</p>
+                </div>
+            </div>
+            
+            <h3>3.3 Transparency and Accountability</h3>
+            <p>Transparency and accountability stand as foundational principles for effective AI governance, particularly crucial when considering AI systems designed to regulate other AI. These principles determine whether meta-regulatory approaches merely shift oversight challenges or genuinely enhance governance capacity. This section examines how transparency and accountability considerations manifest in AI-based regulatory contexts, exploring both promising frameworks and persistent challenges.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/400" alt="AI Accountability Framework" />
+                <p class="figure-caption">Figure 7: A multi-layered framework for AI accountability in regulatory contexts.</p>
+            </div>
+            
+            <h3>3.4 Data Privacy and Consent</h3>
+            <p>The development and deployment of AI-based regulatory systems introduce significant privacy and consent challenges that warrant careful consideration. These systems often require access to sensitive data for effective oversight, creating tensions between regulatory effectiveness and privacy protection. This section examines these tensions and explores potential approaches for addressing them while respecting individual autonomy and data rights.</p>
+            
+            <h3>3.5 Global and Legal Implications</h3>
+            <p>The emergence of AI-based regulatory approaches occurs within diverse legal frameworks and governance traditions worldwide, creating complex challenges for global coordination and jurisdictional alignment. This section examines the evolving legal landscape surrounding meta-regulatory approaches to AI, exploring both promising developments and persistent tensions in global governance.</p>
+            
+            <p>The European Union has established itself as a regulatory leader through the AI Act, which explicitly addresses automated oversight mechanisms alongside primary AI applications. This landmark legislation establishes risk-based categories with corresponding obligations, defining certain oversight applications as "high-risk" when they influence critical decisions about individuals or safety-relevant systems [22]. For these applications, the Act mandates robust evaluation, documentation, and human oversight requirements, explicitly recognising that regulatory AI warrants scrutiny proportionate to its potential impacts rather than automatic deference as a governance solution.</p>
+            
+            <p>In complementary fashion, the UK has developed principles-based frameworks emphasising safety, transparency, and human oversight while providing greater regulatory flexibility [23]. This approach focuses on outcomes rather than prescriptive technical requirements, potentially accommodating novel oversight mechanisms provided they demonstrate effectiveness and appropriate safeguards. The UK established the AI Safety Institute (AISI) in November 2023, which was later rebranded as the UK AI Security Institute in February 2025 [24]. This transition reflects the UK government's heightened focus on "serious AI risks with security implications" including potential AI applications in developing chemical and biological weapons, facilitating cyber-attacks, and enabling crimes like fraud and child sexual abuse [24].</p>
+            
+            <h3>3.6 Conclusion: The Future of AI Regulating AI</h3>
+            <p>The exploration of AI-based regulation throughout this analysis reveals a domain simultaneously promising and challenging—one that offers potential solutions to pressing oversight problems while introducing novel concerns requiring careful consideration. This concluding section synthesises these findings and outlines potential pathways for responsible development of meta-regulatory approaches to artificial intelligence.</p>
+            
+            <p>The case for AI-based oversight rests on compelling foundations. The scale, complexity, and speed of modern AI systems increasingly exceed human monitoring capabilities, creating fundamental gaps in traditional regulatory approaches. Automated evaluation tools demonstrably enhance our ability to identify harmful patterns, test for vulnerabilities, detect biases, and monitor deployed systems continuously [10]. These capabilities address genuine limitations in current oversight frameworks, potentially enabling more comprehensive governance as AI capabilities advance. When properly designed and deployed, meta-regulatory approaches can augment human judgment with computational thoroughness, providing enhanced safeguards against emerging risks.</p>
+            
+            <div class="figure">
+                <img src="/api/placeholder/800/400" alt="Human-AI Collaborative Governance" />
+                <p class="figure-caption">Figure 8: The future of AI regulation likely involves collaborative governance between human overseers and AI-based regulatory tools.</p>
+            </div>
+        </section>
+        
+        <!-- References -->
+        <section id="references" class="references">
+            <h2>References</h2>
+            <ol>
+                <li>J. Whittlestone, R. Nyrup, A. Alexandrova, K. Dihal, and S. Cave, "Societal implications of algorithmic decision making: A research agenda for Europe," AI & Society, vol. 36, no. 1, pp. 1-10, 2021.</li>
+                <li>P. Akpan, "Attorneys used ChatGPT to draft a legal brief. It didn't go well," The Washington Post, Jun. 6, 2023.</li>
+                <li>J. Buolamwini and T. Gebru, "Gender shades: Intersectional accuracy disparities in commercial gender classification," in Proc. of the 1st Conf. on Fairness, Accountability and Transparency, 2018, pp. 77-91.</li>
+                <li>M. Raghavan, S. Barocas, J. Kleinberg, and K. Levy, "Mitigating bias in algorithmic hiring: Evaluating claims and practices," in Proc. of the 2020 Conf. on Fairness, Accountability, and Transparency, 2020, pp. 469-481.</li>
+                <li>J. Wei et al., "Emergent abilities of large language models," arXiv preprint arXiv:2206.07682, 2022.</li>
+                <li>D. Amodei et al., "Concrete problems in AI safety," arXiv preprint arXiv:1606.06565, 2016.</li>
+                <li>M. Anderljung et al., "Frontier AI regulation: Managing emerging risks to public safety," arXiv preprint arXiv:2307.03718, 2023.</li>
+                <li>R. Yampolskiy, "On controllability of artificial intelligence," arXiv preprint arXiv:2001.04222, 2020.</li>
+                <li>C. O'Neil, Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy. Crown Publishing Group, 2016.</li>
+                <li>I. D. Raji et al., "Closing the AI accountability gap: Defining an end-to-end framework for internal algorithmic auditing," in Proc. of the 2020 Conf. on Fairness, Accountability, and Transparency, 2020, pp. 33-44.</li>
+                <li>S. Wachter, B. Mittelstadt, and L. Floridi, "Transparent, explainable, and accountable AI for robotics," Science Robotics, vol. 2, no. 6, 2017.</li>
+                <li>M. Kearns and A. Roth, The Ethical Algorithm: The Science of Socially Aware Algorithm Design. Oxford University Press, 2019.</li>
+                <li>T. B. Brown et al., "Language models are few-shot learners," in Advances in Neural Information Processing Systems, 2020, vol. 33, pp. 1877-1901.</li>
+                <li>C. Rudin, "Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead," Nature Machine Intelligence, vol. 1, no. 5, pp. 206-215, 2019.</li>
+                <li>Z. Obermeyer, B. Powers, C. Vogeli, and S. Mullainathan, "Dissecting racial bias in an algorithm used to manage the health of populations," Science, vol. 366, no. 6464, pp. 447-453, 2019.</li>
+                <li>D. Perez, M. T. Ribeiro, and F. Petroni, "Red teaming language models with language models," arXiv preprint arXiv:2202.03286, 2022.</li>
+                <li>M. T. Ribeiro, S. Singh, and C. Guestrin, "'Why should I trust you?': Explaining the predictions of any classifier," in Proc. of the 22nd ACM SIGKDD Int. Conf. on Knowledge Discovery and Data Mining, 2016, pp. 1135-1144.</li>
+                <li>S. M. Lundberg and S. I. Lee, "A unified approach to interpreting model predictions," in Advances in Neural Information Processing Systems, 2017, vol. 30.</li>
+                <li>A. D. Selbst, D. Boyd, S. A. Friedler, S. Venkatasubramanian, and J. Vertesi, "Fairness and abstraction in sociotechnical systems," in Proc. of the Conf. on Fairness, Accountability, and Transparency, 2019, pp. 59-68.</li>
+                <li>I. Rahwan, "Society-in-the-loop: programming the algorithmic social contract," Ethics and Information Technology, vol. 20, no. 1, pp. 5-14, 2018.</li>
+                <li>V. Dignum, Responsible Artificial Intelligence: How to Develop and Use AI in a Responsible Way. Springer Nature, 2019.</li>
+                <li>European Commission, "Proposal for a Regulation laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)," 2021.</li>
+                <li>UK Government, "A pro-innovation approach to AI regulation: Policy paper," Department for Science, Innovation and Technology, 2023.</li>
+                <li>UK Government, "Tackling AI security risks to unleash growth and deliver Plan for Change," Department for Science, Innovation and Technology, Feb. 14, 2025.</li>
+                <li>OECD, "Recommendation of the Council on Artificial Intelligence," 2019.</li>
+            </ol>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>AI Ethics and Regulation of AI Itself</p>
+            <p>UCL Blog Assignment | May 2025</p>
+            <p><a href="#">Back to Top</a></p>
+        </div>
+    </footer>
+</body>
+</html>
